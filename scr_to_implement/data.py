@@ -38,9 +38,8 @@ class ChallengeDataset(Dataset):
         images = torch.tensor(images)
         #labels_output = torch.tensor(labels)
         if self.mode == 'train':
-            self._transform = tv.transforms.Compose([tv.transforms.Resize(300), tv.transforms.RandomRotation(90)
-                                                     , tv.transforms.RandomHorizontalFlip,tv.transforms.RandomVerticalFlip,
-                                                     tv.transforms.ToPILImage(),tv.transforms.ToTensor(),
+            self._transform = tv.transforms.Compose([tv.transforms.ToPILImage(),tv.transforms.Resize(300), tv.transforms.RandomRotation(90)
+                                                     ,tv.transforms.ToTensor(),
                                                      tv.transforms.Normalize(train_mean,train_std)])
         else:
             self._transform = tv.transforms.Compose([tv.transforms.ToPILImage(), tv.transforms.ToTensor(),
