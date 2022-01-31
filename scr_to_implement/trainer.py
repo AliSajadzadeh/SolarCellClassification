@@ -105,7 +105,7 @@ class Trainer:
         self._model.train()
         for i, data in enumerate(self._train_dl,0):
             inputs,labels = data
-            batch_loss,batch_acc = Trainer.train_step(inputs,labels)
+            batch_loss,batch_acc = Trainer.train_step(self,inputs,labels)
             running_loss += batch_loss
             running_acc += batch_acc
         return (running_loss/len(self._train_dl)), (running_acc/len(self._train_dl))
@@ -136,9 +136,11 @@ class Trainer:
         return (batch_loss / len(self._train_dl)), (acc_val / len(self._train_dl))
 
     def fit(self, epochs=-1):
+        print('epochs: ',epochs)
+        print('patience :',  self._early_stopping_patience)
         assert self._early_stopping_patience > 0 or epochs > 0
         # create a list for the train and validation losses, and create a counter for the epoch
-        Epochs = epochs
+
         train_losses = []
         train_accuracy = []
 
@@ -147,11 +149,11 @@ class Trainer:
         scheduler = t.optim.lr_scheduler.ReduceLROnPlateau(self._optim,mode = 'min',
                                                            factor=0.1,
                                                            patience=10,
-                                                           min_lr=1e-5, verbose=False)
+                                                           min_lr=1e-5, verbose=True)
         min_val_loss = 10000
         best_epoch = 0
-        for epoch in range(Epochs):
-            epoch_loss_train, epoch_acc_train = Trainer.train_epoch()
+        for epoch in range(epochs):
+            epoch_loss_train, epoch_acc_train = Trainer.train_epoch(self)
             train_losses.append(epoch_loss_train)
             train_accuracy.append(epoch_acc_train)
 
