@@ -45,6 +45,7 @@ val_loader = DataLoader(val_set,batch_size=32,shuffle=True,num_workers=0)
 
 # create an instance of our ResNet model
 model = model.ResNet()
+#print(model)
 # TODO
 
 # set up a suitable loss criterion (you can find a pre-implemented loss functions in t.nn)
@@ -56,7 +57,7 @@ call_Trainer = Trainer(model=model,crit=criterion,optim=optimizer,train_dl=train
 # TODO
 
 # go, go, go... call fit on trainer
-res = Trainer.fit(-2)
+res = call_Trainer.fit(100)
 
 # plot the results
 plt.plot(np.arange(len(res[0])), res[0], label='train loss')
