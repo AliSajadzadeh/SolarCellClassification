@@ -1,5 +1,6 @@
 import torch
 import torch as t
+import numpy as np
 from sklearn.metrics import f1_score
 from tqdm.autonotebook import tqdm
 
@@ -50,8 +51,9 @@ class Trainer:
               dynamic_axes={'input' : {0 : 'batch_size'},    # variable lenght axes
                             'output' : {0 : 'batch_size'}})
     def acc_func(y_predict,real_y):
-        _, predicted = t.max(y_predict,1)
-        correct_sum = (predicted ==real_y).sum().float()
+        #_, predicted = t.max(y_predict,1)
+        predicted = torch.round(y_predict)
+        correct_sum = ((predicted == real_y).all(dim=1)).sum().float()
         accuracy = correct_sum/real_y.shape[0]
         accuracy = torch.round(accuracy*100)
         return accuracy
@@ -69,11 +71,12 @@ class Trainer:
         self._optim.zero_grad()
         with t.set_grad_enabled(True):
             outputs = self._model(x)
+            fg = np.array([[1,1]])
             loss = self._crit(outputs,y)
             acc = Trainer.acc_func(outputs,y)
             loss.backward()
             self._optim.step()
-        return  loss, acc
+        return loss, acc
 
 
         
@@ -168,6 +171,7 @@ class Trainer:
                 min_val_loss = epoch_loss_val
                 best_epoch = epoch
                 Trainer.save_checkpoint(epoch)
+            scheduler.step(epoch_loss_val)
         return train_losses , val_losses
 
 
