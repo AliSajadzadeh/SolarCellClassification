@@ -49,11 +49,11 @@ model = model.ResNet()
 # TODO
 
 # set up a suitable loss criterion (you can find a pre-implemented loss functions in t.nn)
-criterion = t.nn.CrossEntropyLoss()
+criterion = t.nn.MultiLabelSoftMarginLoss()
 # set up the optimizer (see t.optim)
-optimizer  = torch.optim.SGD(model.parameters(),lr=0.01,momentum=0.9)
+optimizer = torch.optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
 # create an object of type Trainer and set its early stopping criterion
-call_Trainer = Trainer(model=model,crit=criterion,optim=optimizer,train_dl=train_loader,val_test_dl = val_loader,cuda=False,early_stopping_patience=10)
+call_Trainer = Trainer(model=model, crit=criterion, optim=optimizer, train_dl=train_loader, val_test_dl=val_loader,cuda=False, early_stopping_patience=10)
 # TODO
 
 # go, go, go... call fit on trainer
