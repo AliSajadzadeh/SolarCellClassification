@@ -1,7 +1,7 @@
 # Solar Cell Defect Classification with Convolutional Neural Networks
 ## Introduction
 
-This project focuses on classifying defects in solar cells using convolutional neural networks (CNNs). We implement various CNN architectures using TensorFlow to detect two types of defects: cracks and inactive regions.
+This project focuses on classifying defects in solar cells using convolutional neural networks (CNNs). We implement various CNN architectures using PyTorch to detect two types of defects: cracks and inactive regions.
 
 
 ## Dataset
