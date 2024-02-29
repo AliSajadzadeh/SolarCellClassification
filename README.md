@@ -15,7 +15,7 @@ inactive regions on a monocristalline module](https://github.com/AliSajadzadeh/S
 
 Two CNN architectures are implemented: ResNet18 and AlexNet. ResNet18 consists of residual blocks with skip connections, while AlexNet has been modified to use batch normalization instead of local response normalization.
 
-##Training
+## Training
 
 The training process involves alternating between training epochs on the training set and evaluating performance on the validation set. The training continues until a stopping criterion is met.
 
