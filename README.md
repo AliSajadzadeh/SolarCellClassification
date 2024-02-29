@@ -19,9 +19,9 @@ The training process involves alternating between training epochs on the trainin
 
 ## How to Use
 
-    Ensure TensorFlow is installed.
-    Run the provided scripts for data preprocessing, model training, and evaluation.
-    Adjust hyperparameters as needed.
-    Monitor training progress and evaluate model performance.
+ Ensure TensorFlow is installed.
+ Run the provided scripts for data preprocessing, model training, and evaluation.
+Adjust hyperparameters as needed.
+Monitor training progress and evaluate model performance.
 
 Refer to the code comments for detailed instructions and explanations.
