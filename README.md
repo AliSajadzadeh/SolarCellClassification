@@ -10,6 +10,8 @@ The dataset comprises electroluminescence images of solar modules, capturing cra
 
 ![Left: Crack on a polycristalline module; Middle: Inactive region; Right: Cracks and
 inactive regions on a monocristalline module](https://github.com/AliSajadzadeh/SolarCellClassification/blob/main/Defective%20Solar%20cells.png)
+Left: Crack on a polycristalline module; Middle: Inactive region; Right: Cracks and
+inactive regions on a monocristalline module
 
 ## Architectures
 
