@@ -8,6 +8,9 @@ This project focuses on classifying defects in solar cells using convolutional n
 
 The dataset comprises electroluminescence images of solar modules, capturing cracks and inactive regions. Cracks vary in size, while inactive regions result from disconnections caused by cracks. The dataset preprocessing pipeline handles loading, normalization, augmentation, and class-balanced sampling.
 
+![Left: Crack on a polycristalline module; Middle: Inactive region; Right: Cracks and
+inactive regions on a monocristalline module](https://github.com/AliSajadzadeh/SolarCellClassification/blob/main/Defective%20Solar%20cells.png)
+
 ## Architectures
 
 Two CNN architectures are implemented: ResNet18 and AlexNet. ResNet18 consists of residual blocks with skip connections, while AlexNet has been modified to use batch normalization instead of local response normalization.
